@@ -1,10 +1,8 @@
-%global snapdate 20171203
-%global commit 271077f3111fe1773a73ce9e7b17e44bbd649966
+%global snapdate 20180418
+%global commit 27574518bb3be9f7c7fc060e6be39df6eac85f21
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
-%global rel 1
-
-%global reponame dnf-urpm
+%global rel 2
 
 # Replacing urpmi
 %bcond_without as_urpmi
@@ -15,8 +13,8 @@ Release:        %{?snapdate:0.git%{snapdate}.%{shortcommit}.}%{rel}
 Summary:        URPM* tool suite implemented on top of DNF
 
 License:        GPLv3+
-URL:            https://gitlab.com/mdklinux/%{reponame}
-Source0:        %{url}/repository/archive.tar.gz?ref=%{commit}#/%{name}-%{shortcommit}.tar.gz
+URL:            https://github.com/rpm-software-management/%{name}
+Source0:        %{url}/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
 
 BuildRequires:  python3-devel
 # dnf-urpmi
@@ -32,7 +30,7 @@ Requires:       dnf-command(remove)
 # dnf-urpmq / dnf-urpmf - Not yet implemented
 #Requires:       dnf-command(repoquery)
 
-Provides:       %{reponame} = %{version}-%{release}
+Provides:       dnf-urpm = %{version}-%{release}
 
 BuildArch:      noarch
 
@@ -51,7 +49,7 @@ urpmi.update, urpme, urpmq, and urpmf as possible on top of DNF.
 
 
 %prep
-%autosetup -n %{reponame}-%{commit}-%{commit}
+%autosetup -n %{name}-%{commit}
 
 
 %build
