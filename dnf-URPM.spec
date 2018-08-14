@@ -2,7 +2,7 @@
 %global commit 27574518bb3be9f7c7fc060e6be39df6eac85f21
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
-%global rel 2
+%global rel 3
 
 # Replacing urpmi
 %bcond_without as_urpmi
@@ -35,8 +35,8 @@ Provides:       dnf-urpm = %{version}-%{release}
 BuildArch:      noarch
 
 %if %{with as_urpmi}
-Obsoletes:      urpmi
-Provides:       urpmi
+Obsoletes:      urpmi < 8.03.5
+Provides:       urpmi = 8.03.5
 %endif
 
 %description
@@ -50,7 +50,6 @@ urpmi.update, urpme, urpmq, and urpmf as possible on top of DNF.
 
 %prep
 %autosetup -n %{name}-%{commit}
-
 
 %build
 # Nothing to build
