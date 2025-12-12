@@ -9,7 +9,7 @@
 
 Name:           dnf-URPM
 Version:        0
-Release:        %{?snapdate:0.git%{snapdate}.%{shortcommit}.}%{rel}
+Release:        %{?snapdate:0.git%{snapdate}.%{shortcommit}.}%{rel}1
 Summary:        URPM* tool suite implemented on top of DNF
 
 License:        GPLv3+
